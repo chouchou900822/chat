@@ -1,0 +1,24 @@
+{
+  "name": "chat-demo",
+  "version": "1.0.0",
+  "description": "Chat demo with koa.js react.js and webrtc",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koa.js",
+    "react.js",
+    "webrtc",
+    "chat"
+  ],
+  "author": "Edison",
+  "license": "MIT",
+  "dependencies": {
+    "koa-router": "^6.0.0",
+    "koa-static-cache": "^3.1.2",
+    "koa.io": "0.0.3",
+    "lodash": "^3.10.1"
+  }
+}
