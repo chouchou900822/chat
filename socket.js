@@ -4,10 +4,11 @@ const _ = require("lodash");
 module.exports = function (app) {
   let userNumber = 0;
   let user = [];
+  let messages = [];
   app.io.use(function* (next) {
-    console.log("握手");
+    console.log("connect");
     yield* next;
-    console.log("断开");
+    console.log("close");
     const username = this.username;
     _.remove(user, function (n) {
       return n == username;
@@ -44,6 +45,14 @@ module.exports = function (app) {
         userNumber: userNumber,
         user: user
       });
+      this.emit('send', messages);
+      this.broadcast.emit('send', messages);
     }
+  });
+
+  app.io.route('send', function* (next, message) {
+    messages.push(message);
+    this.emit('send', messages);
+    this.broadcast.emit('send', messages);
   });
 };
