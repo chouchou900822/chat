@@ -5,13 +5,18 @@ const content = {
   overflow: 'scroll',
   overflowX: 'hidden  '
 };
-
+//#remoteVideos video {
+//  height: 150px;
+//}
+//#localVideo {
+//  height: 150px;
+//}
+const socket = io();
 const Content = React.createClass({
   getInitialState: function () {
     return {data: {}, message: '', messages: []};
   },
   componentDidMount: function () {
-    const socket = io();
     const ctx = this;
     socket.on("add user", function (data) {
       const message = `${data.username} join the room`;
@@ -24,12 +29,20 @@ const Content = React.createClass({
     socket.on("send", function (messages) {
       ctx.setState({messages: messages});
     })
+    socket.on("video", function () {
+      console.log("invite for video");
+    });
+  },
+  _privateMessage: function (item) {
+    console.log("send the invite");
+    socket.emit("video", item);
   },
   render: function () {
+    const ctx = this;
     const user = this.state.data.user;
     let userItems = [];
     if (user) {
-      userItems = user.map(item => <li className="list-group-item">{item}</li>);
+      userItems = user.map(item => <li className="list-group-item" onClick={() => ctx._privateMessage(item)}>{item}</li>);
     }
     const messages = this.state.messages;
     let messageItems = [];
@@ -47,6 +60,7 @@ const Content = React.createClass({
             </div>
           </div>
           <div className="col-md-8" style={content}>
+            <p>chat content:</p>
             <div className="panel panel-default">
               {messageItems}
             </div>

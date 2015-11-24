@@ -5,6 +5,7 @@ module.exports = function (app) {
   let userNumber = 0;
   let user = [];
   let messages = [];
+  let sockets = {};
   app.io.use(function* (next) {
     console.log("connect");
     yield* next;
@@ -27,6 +28,7 @@ module.exports = function (app) {
   });
 
   app.io.route('new user', function* (next, username) {
+    sockets[username] = this;
     this.username = username;
     if (_.some(user, function (n) {
         return n == username;
@@ -54,5 +56,10 @@ module.exports = function (app) {
     messages.push(message);
     this.emit('send', messages);
     this.broadcast.emit('send', messages);
+  });
+
+  app.io.route('video', function* (next, username) {
+    let socket = sockets[username];
+    socket.emit("video");
   });
 };
