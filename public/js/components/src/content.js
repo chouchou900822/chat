@@ -34,8 +34,13 @@ const Content = React.createClass({
     });
   },
   _privateMessage: function (item) {
-    console.log("send the invite");
-    socket.emit("video", item);
+    const username = localStorage.username;
+    if (item == username) {
+      alert('Sorry! You cann\'t chat with yourself');
+    } else {
+      console.log("send the invite");
+      socket.emit("video", item);
+    }
   },
   render: function () {
     const ctx = this;
@@ -67,6 +72,7 @@ const Content = React.createClass({
           </div>
           <div className="col-md-2">
             <p>online users:</p>
+            <h1>click the name for video chat</h1>
             <ul className="list-group">
               {userItems}
             </ul>
