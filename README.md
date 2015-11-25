@@ -23,7 +23,3 @@ Run.
 ```
 $ npm start
 ```
-
-#Todo
-
-Add webRTC for video chat.
