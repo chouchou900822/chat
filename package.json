@@ -20,5 +20,9 @@
     "koa-static-cache": "^3.1.2",
     "koa.io": "0.0.3",
     "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "pm2": "^0.15.10",
+    "react-tools": "^0.13.3"
   }
 }
