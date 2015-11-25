@@ -1,5 +1,7 @@
 FROM node:onbuild
 
+RUN npm install
+
 RUN ./node_modules/.bin/jsx ./public/js/components/src ./public/js/components/dist
 
 EXPOSE 80
