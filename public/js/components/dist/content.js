@@ -11,7 +11,7 @@ const videoStyle = {
 const notice = {
   color: 'red'
 }
-const socket = io();
+//const socket = io();
 const Content = React.createClass({displayName: "Content",
   getInitialState: function () {
     return {data: {}, message: '', messages: [], chat: false};

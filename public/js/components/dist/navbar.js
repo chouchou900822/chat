@@ -1,11 +1,11 @@
 "use strict";
-
+const socket = io();
 const Navbar = React.createClass({displayName: "Navbar",
   getInitialState: function() {
     return {username: ''};
   },
   componentWillMount: function () {
-    const socket = io();
+
     let username = localStorage.username;
     if (username) {
       socket.emit("new user", username);
