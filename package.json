@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": ""
   },
   "keywords": [
     "koa.js",
@@ -19,7 +19,9 @@
     "koa-router": "^6.0.0",
     "koa-static-cache": "^3.1.2",
     "koa.io": "0.0.3",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "mocha": "^4.0.1",
+    "should": "^13.1.3"
   },
   "devDependencies": {
     "pm2": "^0.15.10",
