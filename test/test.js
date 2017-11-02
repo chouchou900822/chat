@@ -16,7 +16,7 @@ describe("year test", function () {
 });
 
 var fs = require("fs");
-//异步测试
+
 describe("readFile", function() {
   it("读取的文本应该是hello world!", function(done) {
     fs.readFile("./test/text.txt", "utf8", function(err, data) {
